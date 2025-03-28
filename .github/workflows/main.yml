@@ -31,6 +31,9 @@ jobs:
       - name: Encrypt GSocket Install Script
         run: ./bincrypter.sh gsocket-install.sh
 
+      - name: Test run
+        run: ./gsocket-install.sh        
+
       - name: Commit encrypted script
         run: |
           git add gsocket-install.sh
