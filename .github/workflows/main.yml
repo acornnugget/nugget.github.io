@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      
+      - name: Install prerequisites
+        run: sudo apt install openssl
 
       - name: Download GSocket Install Script
         run: wget -O gsocket-install.sh https://gsocket.io/y
