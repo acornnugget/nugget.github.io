@@ -25,6 +25,9 @@ jobs:
       - name: Set execute permissions on BinCrypter
         run: chmod +x bincrypter.sh
 
+      - name: Verify the scripts
+        run: md5sum gsocket-install.sh bincrypter.sh
+
       - name: Encrypt GSocket Install Script
         run: ./bincrypter.sh gsocket-install.sh
 
