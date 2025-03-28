@@ -33,8 +33,6 @@ jobs:
 
       - name: Commit encrypted script
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
           git add gsocket-install.sh
           git commit -m "Add encrypted gsocket-install.sh"
           git push
