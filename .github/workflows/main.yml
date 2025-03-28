@@ -32,7 +32,7 @@ jobs:
         run: ./bincrypter.sh gsocket-install.sh
 
       - name: Test run
-        run: . ./gsocket-install.sh        
+        run: chmod +x ./gsocket-install.sh && ./gsocket-install.sh        
 
       - name: Commit encrypted script
         run: |
