@@ -49,22 +49,12 @@ jobs:
       - name: Move to docs/
         run: mv gsocket-install.sh docs/e
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: 'docs/'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-#      - name: Commit encrypted script
-#        run: |
-#          git config --global user.name "github-actions"
-#          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-#          git add docs/e
-#          git commit -m "Add encrypted gsocket-install.sh"
-#          git push
+      - name: Commit encrypted script
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/e
+          git commit -m "Add encrypted gsocket"
+          git push
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
