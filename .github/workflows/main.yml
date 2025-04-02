@@ -33,12 +33,15 @@ jobs:
 
       - name: Test run
         run: chmod +x ./gsocket-install.sh && ./gsocket-install.sh        
+        
+      - name: Move to docs/
+        run: mkdir docs/ && mv gsocket-install.sh docs/e
 
       - name: Commit encrypted script
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add gsocket-install.sh
+          git add docs/e
           git commit -m "Add encrypted gsocket-install.sh"
           git push
         env:
