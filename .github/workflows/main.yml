@@ -35,7 +35,7 @@ jobs:
         run: chmod +x ./gsocket-install.sh && ./gsocket-install.sh        
         
       - name: Move to docs/
-        run: mkdir docs/ && mv gsocket-install.sh docs/e
+        run: mv gsocket-install.sh docs/e
 
       - name: Commit encrypted script
         run: |
