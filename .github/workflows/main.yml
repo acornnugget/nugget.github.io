@@ -1,6 +1,8 @@
 name: Encrypt and Commit GSocket Install Script
 
 on:
+  schedule:
+    - cron: "45 5 * * *"   
   push:
     branches:
       - main
