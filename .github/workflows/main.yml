@@ -22,8 +22,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Install prerequisites
-        run: sudo apt install openssl && openssl version && uname -a && cd ${{ GitHub.workspace }}
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
       - name: Download GSocket Install Script
         run: wget -O gsocket-install.sh https://gsocket.io/y
@@ -46,12 +46,22 @@ jobs:
       - name: Move to docs/
         run: mv gsocket-install.sh docs/e
 
-      - name: Commit encrypted script
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/e
-          git commit -m "Add encrypted gsocket-install.sh"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: 'docs/'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+#      - name: Commit encrypted script
+#        run: |
+#          git config --global user.name "github-actions"
+#          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+#          git add docs/e
+#          git commit -m "Add encrypted gsocket-install.sh"
+#          git push
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
